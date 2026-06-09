@@ -9,11 +9,11 @@ export class UsuariosController {
 
   @Post()
   create(
-  @Body()
-  createUsuarioDto: CreateUsuarioDto,) {
-    return this.usuariosService.create(
-      createUsuarioDto,
-    );
+    @Body()
+    createUsuarioDto: CreateUsuarioDto,) {
+      return this.usuariosService.create(
+        createUsuarioDto,
+      );
   }
 
   // TODOS LOS USUARIOS
