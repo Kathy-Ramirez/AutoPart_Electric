@@ -8,7 +8,8 @@ async function bootstrap() {
 
   //conexion con el frontend, permitiendo solicitudes desde localhost:5173 y enviando cookies (credentials: true)
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+    methods: 'GET, PATCH, POST, DELETE',
     credentials: true,
   });
   await app.listen(process.env.PORT ?? 3000);
