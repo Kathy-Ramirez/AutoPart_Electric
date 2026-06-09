@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'; 
-import type { Categoria } from '../../types/categoria.types';
+// import type { Categoria } from '../../types/categoria.types';
 
 interface Props {
   open: boolean;

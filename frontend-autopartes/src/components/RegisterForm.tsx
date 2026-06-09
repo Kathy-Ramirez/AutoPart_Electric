@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Eye, EyeOff, User, Mail, Phone, Lock, Hash } from 'lucide-react';
+import { Eye, EyeOff, Mail, Phone, Lock } from 'lucide-react';
 import { PasswordStrengthIndicator } from './PasswordStrengthIndicator';
 
 export const RegisterForm = () => {
