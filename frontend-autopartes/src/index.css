@@ -1,0 +1,18 @@
+@import "tailwindcss";
+.sidebar-link{
+display:flex;
+gap:12px;
+padding:14px;
+border-radius:14px;
+color:white;
+transition:.3s;
+align-items:center;
+}
+
+.sidebar-link:hover{
+background:rgba(59,130,246,.2);
+}
+
+.active{
+background:rgba(59,130,246,.35);
+}
