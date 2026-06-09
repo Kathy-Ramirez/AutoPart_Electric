@@ -28,13 +28,13 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!captchaToken) {
-      setError( 'Completa el captcha');
+      setError('Completa el captcha');
       return;
     }
     try {
       setLoading(true);
       setError('');
-      const response = await loginRequest({ username, password, captchaToken: captchaToken!,});
+      const response = await loginRequest({ username, password, captchaToken: captchaToken! });
       login(response);
       if (response.usuario.rol === 'ADMINISTRADOR') {
         navigate('/admin');
@@ -164,7 +164,7 @@ export default function LoginPage() {
                   disabled={loading}
                   className="bg-cyan-600 hover:bg-cyan-500 transition px-3 rounded-xl text-xs font-bold text-white whitespace-nowrap disabled:opacity-50"
                 >
-                  Enviar
+                  {loading ? 'Enviando...' : 'Enviar'}
                 </button>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function LoginPage() {
                 </button>
               </div>
 
-              {/* BARRA DE SEGURIDAD ELÉCTRICA (Copiada del Registro) */}
+              {/* BARRA DE SEGURIDAD ELÉCTRICA */}
               {nuevaPassword && (
                 <div className="space-y-1 pt-0.5 pb-1 animate-fadeIn">
                   <div className="w-full h-1.5 rounded-full bg-slate-900 overflow-hidden border border-white/5">
@@ -218,25 +218,33 @@ export default function LoginPage() {
                 </div>
               )}
 
-            {/* Confirmar Nueva Contraseña con Ojito */}
-            <div className="relative group">
-              <input 
-                type={showNewPassword ? "text" : "password"} 
-                placeholder="Confirmar nueva contraseña" 
-                value={confirmarPassword} 
-                onChange={(e) => setConfirmarPassword(e.target.value)} 
-                required
-                className="w-full px-4 pr-10 py-3 rounded-xl bg-slate-950/50 text-white outline-none border border-white/5 focus:border-blue-500/40 text-sm placeholder-slate-600"
-              />
-              <button
-                type="button"
-                onClick={() => setShowNewPassword(!showNewPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors focus:outline-none"
-              >
-                {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-              </button>
-            </div>
+              {/* Confirmar Nueva Contraseña con Ojito */}
+              <div className="relative group">
+                <input 
+                  type={showNewPassword ? "text" : "password"} 
+                  placeholder="Confirmar nueva contraseña" 
+                  value={confirmarPassword} 
+                  onChange={(e) => setConfirmarPassword(e.target.value)} 
+                  required
+                  className="w-full px-4 pr-10 py-3 rounded-xl bg-slate-950/50 text-white outline-none border border-white/5 focus:border-blue-500/40 text-sm placeholder-slate-600"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors focus:outline-none"
+                >
+                  {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
 
+              {/* BOTÓN DE ENVIAR CONFIRMACIÓN */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full mt-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg shadow-cyan-500/10 text-sm disabled:opacity-50"
+              >
+                {loading ? 'Actualizando contraseña...' : 'Confirmar Nueva Contraseña'}
+              </button>
             </form>
           </div>
 
@@ -310,15 +318,14 @@ export default function LoginPage() {
             </div>
           )}
 
-
           <div className="flex justify-center pt-2">
-            <ReCAPTCHA sitekey={ import.meta.env .VITE_RECAPTCHA_SITE_KEY } theme="dark" onChange={(token)=> setCaptchaToken(token) } />
+            <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} theme="dark" onChange={(token) => setCaptchaToken(token)} />
           </div>
-
 
           {/* BOTÓN DE ENTRADA */}
           <div className="space-y-4 pt-2">
             <button 
+              type="submit"
               disabled={loading} 
               className="group flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-400 hover:to-cyan-300 rounded-xl p-4 text-white font-bold transition-all duration-300 shadow-xl shadow-blue-500/10 disabled:opacity-50 disabled:pointer-events-none hover:scale-[1.01]"
             >
@@ -343,7 +350,7 @@ export default function LoginPage() {
                   to="/registro" 
                   className="text-blue-400 font-semibold hover:text-blue-300 hover:underline transition-colors"
                 >
-                  Crear una cuenta
+                  Create una cuenta
                 </Link> 
               </div>
               <div className="text-right">
