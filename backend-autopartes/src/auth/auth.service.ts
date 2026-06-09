@@ -178,6 +178,7 @@ export class AuthService {
   // Guardamos los cambios en tu base de datos
   await this.usuarioRepository.save(usuario);
   // 3. Estructura HTML Premium con la temática neón de AutoPart Electric
+
   const htmlContent = `
     <!DOCTYPE html>
     <html>
@@ -186,52 +187,57 @@ export class AuthService {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Recuperación de Contraseña</title>
     </head>
-    <body style="margin: 0; padding: 0; background-color: #020617; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #f8fafc;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px; margin: 40px auto; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);"        
+    <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #334155;">
+      
+      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; border-collapse: collapse;">
+        
         <tr>
-          <td align="center" style="padding: 40px 40px 20px 40px; border-bottom: 1px solid #1e293b;">
-            <div style="font-size: 28px; font-weight: 900; tracking-spacing: 1px; color: #ffffff;">
-              <span style="color: #2563eb;">⚡</span> AutoPart<span style="color: #60a5fa;">Electric</span>
+          <td align="center" style="padding: 32px 32px 20px 32px; border-bottom: 1px solid #f1f5f9;">
+            <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: #0f172a;">
+              <span style="color: #2563eb;">⚡</span> AutoPart<span style="color: #2563eb;">Electric</span>
             </div>
           </td>
-        </tr
+        </tr>
+
         <tr>
-          <td style="padding: 40px;">
-            <h2 style="margin: 0 0 16px 0; font-size: 22px; font-weight: 700; color: #ffffff; text-align: center;">
-              ¿Solicitaste restablecer tu contraseña?
+          <td style="padding: 32px;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600; color: #0f172a; text-align: center;">
+              Restablecer contraseña
             </h2>
-            <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #94a3b8; text-align: center;">
-              Hola, hemos recibido una solicitud para acceder o restablecer tus credenciales en nuestra plataforma. Utiliza el siguiente código de verificación temporal.
+            <p style="margin: 0 0 24px 0; font-size: 14px; line-height: 1.5; color: #64748b; text-align: center;">
+              Recibimos una solicitud para acceder a tu cuenta. Usa el siguiente código temporal para continuar con el proceso.
             </p>
+            
             <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 24px auto;">
               <tr>
-                <td align="center" style="background-color: #020617; border: 2px dashed #2563eb; border-radius: 16px; padding: 16px 40px;">
-                  <span style="font-family: 'Courier New', Courier, monospace; font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #38bdf8;">
+                <td align="center" style="background-color: #f1f5f9; border-radius: 8px; padding: 12px 32px;">
+                  <span style="font-family: 'Courier New', Courier, monospace; font-size: 28px; font-weight: 700; letter-spacing: 4px; color: #1e3a8a;">
                     ${codigo}
                   </span>
                 </td>
               </tr>
             </table>
 
-            <p style="margin: 24px 0 0 0; font-size: 13px; line-height: 1.5; color: #64748b; text-align: center;">
-              Este código es de un solo uso y expirará en <strong style="color: #cbd5e1;">15 minutos</strong>.<br>
-              Si tú no realizaste esta acción, puedes ignorar este mensaje con total seguridad; tu cuenta permanecerá protegida.
+            <p style="margin: 24px 0 0 0; font-size: 12px; line-height: 1.5; color: #94a3b8; text-align: center;">
+              Este código expirará en <strong style="color: #64748b;">15 minutos</strong> y es de un solo uso.<br>
+              Si no solicitaste este cambio, puedes ignorar este correo de forma segura.
             </p>
           </td>
         </tr>
 
         <tr>
-          <td align="center" style="padding: 24px 40px; background-color: #020617; border-top: 1px solid #1e293b;">
-            <p style="margin: 0 0 4px 0; font-size: 12px; color: #475569;">
+          <td align="center" style="padding: 24px 32px; background-color: #f8fafc; border-top: 1px solid #f1f5f9; border-radius: 0 0 12px 12px;">
+            <p style="margin: 0 0 4px 0; font-size: 11px; color: #94a3b8;">
               © 2026 AutoPart Electric. Todos los derechos reservados.
             </p>
-            <p style="margin: 0; font-size: 11px; color: #334155;">
-              Este es un correo automático, por favor no respondas a este mensaje.
+            <p style="margin: 0; font-size: 10px; color: #cbd5e1;">
+              Por favor no respondas directamente a este correo automático.
             </p>
           </td>
         </tr>
 
       </table>
+      
     </body>
     </html>
   `;
